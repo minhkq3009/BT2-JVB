@@ -212,8 +212,7 @@ function toggleView() {
 function adjustTime(minutes) {
     if (isTimerRunning) return; // Prevent changing time while timer is running
     
-    timeMinutes += minutes;
-    if (timeMinutes <= 0) timeMinutes = 30;
+    timeMinutes += 15;
     if (timeMinutes > 240) timeMinutes = 240;
     
     const timeDisplay = document.getElementById('timeDisplay');
