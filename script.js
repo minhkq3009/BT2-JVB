@@ -19,7 +19,7 @@ let isCollapsed = false;
 let isScrolling = false;
 let scrollTimeout = null;
 
-// Timer variables
+
 let timerInterval = null;
 let timerSeconds = 0;
 let isTimerRunning = false;
@@ -66,7 +66,7 @@ function render() {
         const nextMonth = month === 11 ? 0 : month + 1;
         const nextYear = month === 11 ? year + 1 : year;
 
-        // Previous month days
+        
         for (let i = firstDay - 1; i >= 0; i--) {
             const cell = document.createElement('div');
             cell.className = 'day-cell other-month';
@@ -82,7 +82,7 @@ function render() {
             calendarGrid.appendChild(cell);
         }
 
-        // Current month days
+       
         for (let d = 1; d <= daysInMonth; d++) {
             const cell = document.createElement('div');
             cell.className = 'day-cell';
@@ -104,7 +104,7 @@ function render() {
             calendarGrid.appendChild(cell);
         }
 
-        // Next month days
+        
         const totalCells = 42;
         const remainingCells = totalCells - (firstDay + daysInMonth);
         for (let d = 1; d <= remainingCells; d++) {
@@ -216,7 +216,7 @@ function adjustTime(minutes) {
 
     timeMinutes += minutes;
 
-    // Giới hạn từ 15 đến 240 phút
+    
     if (timeMinutes < 15) timeMinutes = 15;
     if (timeMinutes > 240) timeMinutes = 240;
 
@@ -240,7 +240,7 @@ function toggleFocus() {
     const stopBtn = document.getElementById('stopBtn');
 
     if (!isTimerRunning && !isTimerPaused) {
-        // Start timer
+        
         startTimer();
         focusBtn.classList.add('active');
         focusIcon.className = 'fas fa-pause';
@@ -249,10 +249,10 @@ function toggleFocus() {
         timerDisplay.classList.add('active');
         stopBtn.classList.add('active');
     } else if (isTimerRunning) {
-        // Pause timer
+       
         pauseTimer();
     } else if (isTimerPaused) {
-        // Resume timer
+        
         resumeTimer();
         focusIcon.className = 'fas fa-pause';
         focusText.textContent = 'Pause';
@@ -329,10 +329,10 @@ function timerComplete() {
     isTimerRunning = false;
     isTimerPaused = false;
     
-    // Show notification or alert
+    
     alert('Focus session completed!');
     
-    // Reset UI
+    
     stopTimer();
 }
 
@@ -343,7 +343,7 @@ function updateTimerDisplay() {
     
     timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     
-    // Add warning style when less than 1 minute left
+    
     if (timerSeconds <= 60) {
         timerDisplay.classList.add('warning');
     } else {
