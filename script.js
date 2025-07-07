@@ -210,21 +210,26 @@ function toggleView() {
 }
 
 function adjustTime(minutes) {
-    if (isTimerRunning) return; // Prevent changing time while timer is running
-    
-    timeMinutes += 15;
+    if (isTimerRunning) return;
+
+    if (minutes !== 15 && minutes !== -15) return; // chỉ cho +15 hoặc -15
+
+    timeMinutes += minutes;
+
+    // Giới hạn từ 15 đến 240 phút
+    if (timeMinutes < 15) timeMinutes = 15;
     if (timeMinutes > 240) timeMinutes = 240;
-    
+
     const timeDisplay = document.getElementById('timeDisplay');
     timeDisplay.textContent = `${timeMinutes} mins`;
-    
-    // Update timer display if visible
+
     const timerDisplay = document.getElementById('timerDisplay');
     if (timerDisplay.classList.contains('active')) {
         timerSeconds = timeMinutes * 60;
         updateTimerDisplay();
     }
 }
+
 
 function toggleFocus() {
     const focusBtn = document.getElementById('focusBtn');
