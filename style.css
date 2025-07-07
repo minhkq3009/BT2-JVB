@@ -1,5 +1,5 @@
 body {
-    background: #1e1e1e;
+    background: #f1f1f1;
     color: #fff;
     font-family: 'Segoe UI', system-ui, sans-serif;
     margin: 0;
@@ -11,7 +11,7 @@ body {
 
 .calendar-container {
     background: #2A2A30;
-    border-radius: 10px;
+    border-radius: 4px;
     width: 340px;
     height: 483px;
     overflow: hidden;
